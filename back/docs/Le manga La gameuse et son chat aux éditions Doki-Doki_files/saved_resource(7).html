@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- saved from url=(0113)https://www.nautiljon.com/actualite/mangas/le+manga+la+gameuse+et+son+chat+aux+%C3%A9ditions+doki-doki-13448.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>var inDapIF = true</script></head>
+					<body style="padding:0;margin:0 auto" marginwidth="0" marginheight="0">
+						<script type="application/javascript">
+cgRFormat = [920,922,19175,19176];
+cgRCounter = [];
+cgRInterval = [];
+cgRMax = 20;
+cgFInterval = 3000;
+cgRTimer = 45000;
+cgRKey = "rotation";
+function cgR(f)
+{
+	if(cgRCounter[f] > cgRMax)
+		clearInterval(cgRInterval[f]);
+	else
+	{
+		if(cgIsNotNative(f))
+		{
+			if(cgIsNotMasthead(f))
+			{
+				cgShowPlacement(f);
+				top.sas.refresh(f,{target:cgRKey});
+				if(cgRCounter[f] > 0)
+					cgRCounter[f] += 1;
+				else
+					cgRCounter[f] = 1;
+			}
+		}
+	}
+}
+function cgRSetInterval(i)
+{
+	var cgFormat = cgRFormat[i];
+	cgRInterval[cgFormat] = window.setInterval(function(){
+			cgR(cgFormat);
+	}, cgRTimer);
+	
+	if(i != (cgRFormat.length-1))
+		setTimeout(function(){cgRSetInterval(i+1);}, cgFInterval);
+}
+function cgIsNotNative(f)
+{
+	try{
+		if(f==19175 && top.document.getElementsByClassName("ea_native_element")[0] && top.document.getElementsByClassName("ea_native_element")[0].tagName != "SCRIPT")
+			return false;
+		else
+			return true;
+	}catch(e){return true;}
+}
+function cgIsNotMasthead(f)
+{
+	try{
+		if(f==920 && top.document.getElementById("cg_masthead")){
+			top.document.getElementById("cg_masthead").style.display = "none";
+			top.document.getElementById("sas_920").style.display = "block";
+			top.document.getElementById("sas_920").parentNode.style.display = "block";
+		}
+		return true;
+	}catch(e){return true;}
+}
+function cgShowPlacement(f)
+{
+	try{
+		if(f==920)
+		{
+			try{top.document.getElementById("div920").style.display="block";}catch(e){}
+			try{top.document.getElementById("cgdiv_920").style.display="block";}catch(e){}
+		}
+		else
+		if(f==922)
+		{
+			try{top.document.getElementById("div922").style.display="block";}catch(e){}
+			try{top.document.getElementById("cgdiv_922").style.display="block";}catch(e){}			
+		}
+		else
+		if(f==19175)
+		{
+			try{top.document.getElementById("div19175").style.display="block";}catch(e){}
+			try{top.document.getElementById("cgdiv_19175").style.display="block";}catch(e){}
+		}
+		else
+		if(f==19176)
+		{
+			try{top.document.getElementById("ad_cg19176").style.display="block";}catch(e){}
+			try{top.document.getElementById("cgdiv_19176").style.display="block";}catch(e){}
+			
+		}
+		return true;
+	}catch(e){return false;}
+}
+cgRSetInterval(0);
+</script>
+<script type="application/javascript">
+var children = top.document.querySelectorAll('#text_actu .justify > br');
+if(children.length > 0)
+{
+	if(top.document.getElementById('text_actu').scrollHeight > 1000)
+	{
+		var insertedAd = document.createElement("div");
+		children[3].parentNode.insertBefore(insertedAd, children[3].nextSibling);
+		insertedAd.id="sas_32033";
+		top.sas.cmd.push(function() {top.sas.callAd(32033);});
+	}
+}
+</script><script type="application/javascript">
+try{(function(a,b){var c=document.createElement('style');c.type='text/css';if(c.styleSheet)c.styleSheet.cssText=b;else c.appendChild(document.createTextNode(b));a.parentNode.appendChild(c)}(top.document.getElementsByTagName('script')[0],'#sas_32325,#sas_32325 > iframe{display:none;}'));}catch(e){}
+</script>
+					
+				
+			</body></html>
