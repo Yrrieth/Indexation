@@ -10,18 +10,24 @@
     if ($result_query = mysqli_query($connection, $sql)) {
         if ($result_query->num_rows > 0) {
             $index = 0;
+            $html = '<div>';
             while ($row = $result_query->fetch_assoc()){
                 $lien = $row['url_document'];
                 $lien = "back".substr($lien, 2, strlen($lien));
 
-                echo '<div><a href="'. $lien . '">' . $lien .
-                    '<h3>' . $row['titre_document'].'</h3>' .
-                    '<p>' . $row['description_document'] .
-                    '</p></a></div>';
-
-                //echo '<a href="'. $lien . '">'.$lien.'</a>';
+                $html .= '<div class="d-flex flex-row my-3">';
+                $html .= '<div class="col-8">' . $lien .
+                    '<a href="'. $lien . '"><h3>' . $row['titre_document'].
+                    '</h3></a><p>' . $row['description_document'] .
+                    '</p></div>';
+                
+                $html .= '<div class="tagCloud col">' . genererNuage($result_mot_poids[$lien]) . '</div></div>';
             }
-            echo "Success select recherche document ";
+            
+            $html .= '</div>';
+            echo $html;
+
+            //echo "Success select recherche document ";
         }
     } else {
         echo "Failed select recherche document ";

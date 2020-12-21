@@ -42,7 +42,9 @@
                     $result[$row['mot']] = $row['poids'];
                     
                 }
-                array_push($result_mot_poids, $result);
+                $fichier = "back".substr($fichier, 2, strlen($fichier));
+                $result_mot_poids[$fichier] = $result;
+                //array_push($result_mot_poids, $result);
             }
             //echo "Success select mot poids ";
         } else {

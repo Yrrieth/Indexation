@@ -41,34 +41,29 @@
 		
 
 			<div id="navbar" class="container-fluid p-0">
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark m-0" style="justify-content: space-around;">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark m-0 justify-content-around">
 					<a href="index.php" class="nav-link">Accueil</a>
 				</nav>
 			</div>
 
 			<div id="content" class="container d-flex flex-column">
 				<?php
-					require 'back/tools/lireCorpus.php';
+					require 'back/tools/rechercherFichier.php';
 					$path = "back/docs/";
 					$all_files = explorerDir($path);
 
-					require 'back/query/selection_mot_poids.php';
+					/*require 'back/query/selection_mot_poids.php';
 
-					/*echo '<pre>';
-					print_r($result_mot_poids);
-					echo '</pre>';*/
 					
 					require 'back/tools/generation_nuage_mot.php';
 					
-					
+					print_r($result_mot_poids);
 					foreach($result_mot_poids as $valeur_mot_poids) {
-						/*echo '<pre>';
-						print_r($valeur_mot_poids);
-						echo '</pre>';*/
+						
 						echo '<div class="tagCloud">';
 						echo genererNuage($valeur_mot_poids);
 						echo '</div>';
-					}
+					}*/
 				?>
 			</div>
 

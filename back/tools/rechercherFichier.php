@@ -12,10 +12,10 @@
 		while($entree = readdir($folder)) {
 			$modele = "/\.(html|php)$/i";
 			if (preg_match($modele, $entree, $result) == 1) {
-				echo $entree, "<br>";
+				//echo $entree, "<br>";
 				$tab[$index++] = $path . $entree;
 			} else if (is_dir($entree)) {
-				echo "C'est un dossier <br>";
+				//echo "C'est un dossier <br>";
 			}
 		}
 		closedir($folder);

@@ -50,13 +50,34 @@
 				<?php
 					
 					if (isset($_POST['recherche'])) {
-						// Dans le cas où on appuie sur rechercher après avoir déjà rempli le formulaire de recherche
+						// Dans le cas où on appuie sur le bouton "rechercher" après avoir déjà rempli le formulaire de recherche
 						if ($_POST['recherche'] == '') {
 							unset($_POST['recherche']);
 							echo "Veuillez remplir la barre de recherche.";
 						} else {
-							echo 'Vous recherchez : ' . htmlspecialchars(html_entity_decode($_POST['recherche']));
+							echo '<div>Vous recherchez : ' . htmlspecialchars(html_entity_decode($_POST['recherche'])) . '</div>';
 							$recherche = $_POST['recherche'];
+
+							require 'back/tools/rechercherFichier.php';
+							$path = "back/docs/";
+							$all_files = explorerDir($path);
+							require 'back/query/selection_mot_poids.php';
+							require 'back/tools/generation_nuage_mot.php';
+
+							/*echo '<pre>';
+							print_r($result_mot_poids);
+							echo '</pre>';
+
+							echo '<pre>';
+							print_r(array_keys($result_mot_poids));
+							echo '</pre>';
+
+							foreach($result_mot_poids as $valeur_mot_poids) {
+								echo '<div class="tagCloud">';
+								echo genererNuage($valeur_mot_poids);
+								echo '</div>';
+							}*/
+
 							require 'back/query/selection_recherche_document.php';
 						}
 						
