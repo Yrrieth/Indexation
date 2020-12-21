@@ -16,7 +16,7 @@ document (id,  document, titre, description)
 3 tata/test.html titre3   ceci est le descriptif etc2   (article 3   java 4)
 4 titi/test.html
 
-doucment_mot (id_document, id_mot, poids)
+doucement_mot (id_document, id_mot, poids)
 1  1  23
 1  5  10
 2  3  5
