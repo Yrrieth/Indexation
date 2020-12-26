@@ -50,8 +50,13 @@
 				<?php
 					require 'back/tools/rechercherFichier.php';
 					$path = "back/docs/";
-					$all_files = explorerDir($path);
+					$tab = array();
+					$index = 0;
+					$all_files = explorerDir($path, $tab, $index);
 
+					echo '<pre>';
+					print_r($all_files);
+					echo '</pre>';
 					/*require 'back/query/selection_mot_poids.php';
 
 					

@@ -14,13 +14,18 @@
 			require 'fonctions.inc.php';
 			require 'indexation_head.php';
 			require 'indexation_body.php';
-			require 'lireCorpus.php';
+			require 'rechercherFichier.php';
 
 			$path= "../docs/";
-			$all_files = explorerDir($path);
+			$tab = array();
+			$index = 0;
+			$all_files = explorerDir($path, $tab, $index);
 
-			foreach ($all_files as $cle_file => $valeur_file) {
-				echo $valeur_file . ' ';
+			foreach ($all_files[0] as $cle_file => $valeur_file) {
+				//echo $valeur_file . ' ';
+				echo '<pre>';
+					print_r($all_files);
+					echo '</pre>';
 				start_indexation($valeur_file);
 			}
 

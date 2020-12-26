@@ -61,3 +61,12 @@ a:active{
     /*color: #4B088A;*/
     text-decoration: none;
 }
+
+
+.afficheNuageMot{
+    color: #2c7fcc;
+}
+
+.afficheNuageMot:hover{
+    text-decoration: underline;
+}

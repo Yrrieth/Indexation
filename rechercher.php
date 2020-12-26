@@ -60,7 +60,9 @@
 
 							require 'back/tools/rechercherFichier.php';
 							$path = "back/docs/";
-							$all_files = explorerDir($path);
+							$tab = array();
+							$index = 0;
+							$all_files = explorerDir($path, $tab, $index);
 							require 'back/query/selection_mot_poids.php';
 							require 'back/tools/generation_nuage_mot.php';
 
@@ -89,6 +91,47 @@
 						$recherche = $_GET['q'];
 						require 'back/query/selection_recherche_document.php';
 					}
+
+					if (isset($index)) {
+						echo '
+							<script>
+								console.log("' . $index . '");
+								var afficheNuageMot = document.getElementsByClassName("afficheNuageMot");
+								var nuageMot = document.getElementsByClassName("nuageMot");
+								/*for (var i = 0; i < afficheNuageMot.length; i++) {
+									console.log(afficheNuageMot[i]);
+									afficheNuageMot[i].addEventListener("click", ()=>{
+										console.log(this.nuageMot);
+										(function () {
+											if (nuageMot[i].className == "d-none") {
+												nuageMot[i].className = "d-block";
+											} else {
+												nuageMot[i].className = "d-none";
+											}
+										})(); // Immediate invocation
+									})
+								}*/
+								//https://gomakethings.com/why-you-shouldnt-attach-event-listeners-in-a-for-loop-with-vanilla-javascript/
+								//https://gomakethings.com/why-event-delegation-is-a-better-way-to-listen-for-events-in-vanilla-js/
+								document.addEventListener("click", function(event) {
+									if (event.target.matches(".afficheNuageMot")) {
+										console.log("HAHA");
+										//document.getElementsByClassName(".nuageMot").classList.add("d-none");
+										console.log(nuageMot);
+										for (var i = 0; i < nuageMot.length; i++) {
+											console.log(nuageMot[i]);
+											if (nuageMot[i].className == "nuageMot tagCloud col d-none") {
+												nuageMot[i].className = "nuageMot tagCloud col d-block";
+											} else {
+												nuageMot[i].className = "nuageMot tagCloud col d-none";
+											}
+										}
+									}
+								});
+							</script>
+						';
+					}
+					
 				?>
 			</div>
 

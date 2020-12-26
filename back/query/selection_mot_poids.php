@@ -3,7 +3,7 @@
 
     $result_mot_poids = array();
 
-    foreach ($all_files as $fichier) {
+    foreach ($all_files[0] as $fichier) {
         $fichier = substr($fichier, 4, strlen($fichier));
         $fichier = ".." . $fichier;
         $result = array();
