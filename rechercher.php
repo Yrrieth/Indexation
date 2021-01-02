@@ -80,16 +80,27 @@
 								echo '</div>';
 							}*/
 
+							require 'back/query/correcteur_orthographe.php';
 							require 'back/query/selection_recherche_document.php';
 						}
 						
-					} else {
-						echo "Veuillez remplir la barre de recherche.";
-					}
+					} else 
 					if (isset($_GET['q'])) {
 						echo 'Vous recherchez : ' . htmlspecialchars(html_entity_decode($_GET['q']));
 						$recherche = $_GET['q'];
+						
+						require 'back/tools/rechercherFichier.php';
+						$path = "back/docs/";
+						$tab = array();
+						$index = 0;
+						$all_files = explorerDir($path, $tab, $index);
+						require 'back/query/selection_mot_poids.php';
+						require 'back/tools/generation_nuage_mot.php';
+
+						require 'back/query/correcteur_orthographe.php';
 						require 'back/query/selection_recherche_document.php';
+					} else {
+						echo "Veuillez remplir la barre de recherche.";
 					}
 
 					if (isset($index)) {
