@@ -15,7 +15,7 @@
             ((
                 (mot LIKE '$mot_scinde[0]%') OR (mot LIKE '%$mot_scinde[1]'))
                 AND
-                (LENGTH(mot) < '$longueur_plus_1' AND LENGTH(mot) > '$longueur_moins_1')
+                (LENGTH(mot) <= '$longueur_plus_1' AND LENGTH(mot) >= '$longueur_moins_1')
             )";
 
     if ($result_query = mysqli_query($connection, $sql)) {
@@ -23,7 +23,6 @@
             echo 'Cherchez-vous plutôt : ';
             while ($row = $result_query->fetch_assoc()){
                 echo '<a href="./rechercher.php?q=' . $row['mot'] . '">' .  $row['mot'] . '</a>';
-                //echo $row['mot'] . '<br>';
             }
         }
     } else {
